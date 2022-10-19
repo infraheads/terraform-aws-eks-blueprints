@@ -1,0 +1,29 @@
+{{- with .Values }}
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: {{ required "Name of cluster issuer" .name }}-route53-clusterissuer
+spec:
+  acme:
+    {{- if .email }}
+    email: {{ .email | quote }}
+    {{- end }}
+    {{- if .preferredChain }}
+    preferredChain: {{ .preferredChain | quote }}
+    {{- end }}
+    {{- if .externalAccountBinding.keyID }}
+    {{- include "externalAccount" .externalAccountBinding | indent 4 }}
+    {{- end }}
+    privateKeySecretRef:
+      name: {{ required "Name of cluster issuer" .name }}-route53-secretkeyref
+    server: {{ required "A valid CA URL is required." .acmeServerUrl | quote }}
+    solvers:
+    - dns01:
+        route53:
+          region: {{ .region | default "global" | quote }}
+      {{- if .dnsZones }}
+      selector:
+        dnsZones:
+        {{- .dnsZones | toYaml | nindent 12 }}
+      {{- end }}
+{{- end }}

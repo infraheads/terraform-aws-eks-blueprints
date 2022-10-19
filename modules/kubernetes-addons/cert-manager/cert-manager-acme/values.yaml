@@ -1,0 +1,12 @@
+name:                                                                 #Required
+email: user@example.com                                               #Recommended
+externalAccountBinding:                                               #Optional
+  keyID:                                                              #Required if using external account binding
+  keySecretRef:                                                       #Required if using external account binding
+    key:                                                              #Optional
+    name:                                                             #Required
+preferredChain: "ISRG Root X1"                                        #Optional
+acmeServerUrl: https://acme-staging-v02.api.letsencrypt.org/directory #Required
+region: global                                                        #Required
+dnsZones:                                                             #(List of dns zones) Optional
+  - domain.name

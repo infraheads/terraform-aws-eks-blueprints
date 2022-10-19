@@ -680,14 +680,14 @@ variable "cert_manager_domain_names" {
   default     = []
 }
 
-variable "cert_manager_install_letsencrypt_issuers" {
-  description = "Install Let's Encrypt Cluster Issuers"
+variable "cert_manager_install_acme_issuers" {
+  description = "Install ACME Cluster Issuers"
   type        = bool
   default     = true
 }
 
-variable "cert_manager_letsencrypt_email" {
-  description = "Email address for expiration emails from Let's Encrypt"
+variable "cert_manager_email" {
+  description = "Email address for expiration emails from ACME"
   type        = string
   default     = ""
 }
@@ -708,6 +708,48 @@ variable "cert_manager_kubernetes_svc_image_pull_secrets" {
   description = "list(string) of kubernetes imagePullSecrets"
   type        = list(string)
   default     = []
+}
+#! changings ------
+variable "cert_manager_cluster_issuer_name" {
+  description = "Name of cluster issuer release"
+  type        = string
+  default     = ""
+}
+
+variable "cert_manager_external_account_keyID" {
+  description = "ID of the CA key that the External Account is bound to."
+  type        = string
+  default     = ""
+}
+
+variable "cert_manager_external_account_secret_ref_key" {
+  description = "Secret Key Selector referencing a data item in a Kubernetes Secret which holds the symmetric MAC key of the External Account Binding."
+  type        = string
+  default     = ""
+}
+
+variable "cert_manager_external_account_secret_ref_name" {
+  description = "Secret Key Selector referencing a data item in a Kubernetes Secret which holds the symmetric MAC key of the External Account Binding."
+  type        = string
+  default     = ""
+}
+
+variable "cert_manager_preferred_chain" {
+  description = "Chain to use if the ACME server outputs multiple."
+  type        = string
+  default     = ""
+}
+
+variable "cert_manager_acme_server_url" {
+  description = "The URL used to access the ACME server's 'directory' endpoint."
+  type        = string
+  default     = ""
+}
+
+variable "cert_manager_dns_region" {
+  description = "DNS Region"
+  type        = string
+  default     = ""
 }
 
 #-----------Argo Rollouts ADDON-------------

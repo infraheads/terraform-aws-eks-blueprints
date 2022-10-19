@@ -2,7 +2,7 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: {{ required "Name of cluster issuer" .name }}-route53-clusterissuer
+  name: {{ required "Prefix of certificate and cluster issuer is required." .name }}-route53-clusterissuer
 spec:
   acme:
     {{- if .email }}
@@ -20,6 +20,25 @@ spec:
     solvers:
     - dns01:
         route53:
+          {{- if .accessKeyID }}
+          accessKeyID: {{ .accessKeyID }}
+          {{- end }}
+          {{- if .accessKeyIDSecretRef.name }}
+          accessKeyIDSecretRef:
+            key:  {{ .accessKeyIDSecretRef.key }}
+            name: {{ .accessKeyIDSecretRef.name }}
+          {{- end }}
+          {{- if .secretAccessKeySecretRef.name }}
+          accessKeyIDSecretRef:
+            key:  {{ .secretAccessKeySecretRef.key }}
+            name: {{ .secretAccessKeySecretRef.name }}
+          {{- end }}
+          {{- if .hostedZoneID }}
+          hostedZoneID: {{ .hostedZoneID }}
+          {{- end }}
+          {{- if .role }}
+          role: {{ .role }}
+          {{- end }}
           region: {{ .region | default "global" | quote }}
       {{- if .dnsZones }}
       selector:

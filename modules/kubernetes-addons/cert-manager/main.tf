@@ -43,36 +43,9 @@ resource "helm_release" "cert_manager_acme" {
   }
 
   set {
-    name  = "preferredChain"
-    value = var.preferred_chain
+    name  = "commonName"
+    value = var.common_name
     type  = "string"
-  }
-
-  set {
-    name  = "externalAccountBinding.keyID"
-    value = var.external_account_keyID
-    type  = "string"
-  }
-
-  set {
-    name  = "externalAccountBinding.keySecretRef.key"
-    value = var.external_account_secret_ref_key
-    type  = "string"
-  }
-
-  set {
-    name  = "externalAccountBinding.keySecretRef.name"
-    value = var.external_account_secret_ref_name
-  }
-
-  set {
-    name  = "acmeServerUrl"
-    value = var.acme_server_url
-  }
-
-  set {
-    name  = "region"
-    value = var.dns_region
   }
 
   depends_on = [module.helm_addon]

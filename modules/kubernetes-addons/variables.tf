@@ -752,6 +752,66 @@ variable "cert_manager_dns_region" {
   default     = ""
 }
 
+variable "cert_manager_certificate_common_name" {
+  description = "Common name to be used on the Certificate."
+  type        = string
+  default     = ""
+}
+
+variable "cert_manager_certificate_is_ca" {
+  description = "IsCA will mark this Certificate as valid for certificate signing."
+  type        = bool
+  default     = true
+}
+
+variable "cert_manager_dns_names" {
+  description = "DNSNames is a list of DNS subjectAltNames to be set on the Certificate."
+  type        = list(string)
+  default     = []
+}
+
+variable "cert_manager_access_keyID_secret_ref_key" {
+  description = "The SecretAccessKey is used for authentication. The key of the entry in the Secret resource's `data` field to be used."
+  type        = string
+  default     = ""
+}
+
+variable "cert_manager_access_keyID_secret_ref_name" {
+  description = "The SecretAccessKey is used for authentication. Name of the resource being referred to."
+  type        = string
+  default     = ""
+}
+
+variable "cert_manager_secret_access_key_secret_ref_key" {
+  description = "The SecretAccessKey is used for authentication. The key of the entry in the Secret resource's `data` field to be used."
+  type        = string
+  default     = ""
+}
+
+variable "cert_manager_secret_access_key_secret_ref_name" {
+  description = "The SecretAccessKey is used for authentication. Name of the resource being referred to."
+  type        = string
+  default     = ""
+}
+
+variable "cert_manager_access_key_id" {
+  description = "The AccessKeyID is used for authentication."
+  type        = string
+  default     = ""
+}
+
+variable "cert_manager_hosted_zone_id" {
+  description = "If set, the provider will manage only this zone in Route53 and will not do an lookup using the route53:ListHostedZonesByName api call."
+  type        = string
+  default     = ""
+}
+
+variable "cert_manager_role" {
+  description = "Role is a Role ARN which the Route53 provider will assume using the explicit credentials AccessKeyID/SecretAccessKey"
+  type        = string
+  default     = ""
+}
+
 #-----------Argo Rollouts ADDON-------------
 variable "enable_argo_rollouts" {
   description = "Enable Argo Rollouts add-on"

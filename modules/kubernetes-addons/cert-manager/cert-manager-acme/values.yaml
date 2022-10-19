@@ -1,5 +1,5 @@
-name:                                                                 #Required
-email: user@example.com                                               #Recommended
+name: example                                                         #Required
+email: hakobmkoyan8@gmail.com                                               #Recommended
 externalAccountBinding:                                               #Optional
   keyID:                                                              #Required if using external account binding
   keySecretRef:                                                       #Required if using external account binding
@@ -7,6 +7,20 @@ externalAccountBinding:                                               #Optional
     name:                                                             #Required
 preferredChain: "ISRG Root X1"                                        #Optional
 acmeServerUrl: https://acme-staging-v02.api.letsencrypt.org/directory #Required
+accessKeyID:                                                          #Optional
+accessKeyIDSecretRef:                                                 #Optional
+  key:                                                                #Optional
+  name:                                                               #Required if accessKeyIdSecretRef used
+secretAccessKeySecretRef:                                             #Optional
+  key:                                                                #Optional
+  name:                                                               #Required if secretAccessKeySecretRef used
+hostedZoneID:                                                         #Optional
 region: global                                                        #Required
+role:                                                                 #Optional
 dnsZones:                                                             #(List of dns zones) Optional
   - domain.name
+#Certificate
+commonName: example.com
+dnsNames:
+  - example.com
+isCA: true

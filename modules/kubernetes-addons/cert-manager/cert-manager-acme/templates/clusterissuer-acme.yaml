@@ -12,27 +12,14 @@ spec:
     preferredChain: {{ .preferredChain | quote }}
     {{- end }}
     {{- if .externalAccountBinding.keyID }}
-    {{- include "externalAccount" .externalAccountBinding | indent 4 }}
+    {{- include "externalAccount" . | indent 4 }}
     {{- end }}
     privateKeySecretRef:
-      name: {{ required "Name of cluster issuer" .name }}-route53-secretkeyref
-    server: {{ required "A valid CA URL is required." .acmeServerUrl | quote }}
+      name: {{ .name }}-route53-secretkeyref
+    server: {{ .acmeServerUrl | quote }}
     solvers:
     - dns01:
         route53:
-          {{- if .accessKeyID }}
-          accessKeyID: {{ .accessKeyID }}
-          {{- end }}
-          {{- if .accessKeyIDSecretRef.name }}
-          accessKeyIDSecretRef:
-            key:  {{ .accessKeyIDSecretRef.key }}
-            name: {{ .accessKeyIDSecretRef.name }}
-          {{- end }}
-          {{- if .secretAccessKeySecretRef.name }}
-          accessKeyIDSecretRef:
-            key:  {{ .secretAccessKeySecretRef.key }}
-            name: {{ .secretAccessKeySecretRef.name }}
-          {{- end }}
           {{- if .hostedZoneID }}
           hostedZoneID: {{ .hostedZoneID }}
           {{- end }}

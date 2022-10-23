@@ -1,19 +1,10 @@
 name: example                                                         #Required
-email: hakobmkoyan8@gmail.com                                               #Recommended
+email: hakobmkoyan8@gmail.com                                         #Recommended
 externalAccountBinding:                                               #Optional
   keyID:                                                              #Required if using external account binding
-  keySecretRef:                                                       #Required if using external account binding
-    key:                                                              #Optional
-    name:                                                             #Required
+  secretKey:                                                          #Required if using external account binding
 preferredChain: "ISRG Root X1"                                        #Optional
 acmeServerUrl: https://acme-staging-v02.api.letsencrypt.org/directory #Required
-accessKeyID:                                                          #Optional
-accessKeyIDSecretRef:                                                 #Optional
-  key:                                                                #Optional
-  name:                                                               #Required if accessKeyIdSecretRef used
-secretAccessKeySecretRef:                                             #Optional
-  key:                                                                #Optional
-  name:                                                               #Required if secretAccessKeySecretRef used
 hostedZoneID:                                                         #Optional
 region: global                                                        #Required
 role:                                                                 #Optional

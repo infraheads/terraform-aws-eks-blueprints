@@ -195,25 +195,18 @@ module "cert_manager" {
   addon_context        = local.addon_context
   domain_names         = var.cert_manager_domain_names
   install_acme_issuers = var.cert_manager_install_acme_issuers
-  #  letsencrypt_email                 = var.cert_manager_letsencrypt_email
   kubernetes_svc_image_pull_secrets = var.cert_manager_kubernetes_svc_image_pull_secrets
   #! changings ------
   cluster_issuer_name               = var.cert_manager_cluster_issuer_name
   email                             = var.cert_manager_email
   external_account_keyID            = var.cert_manager_external_account_keyID
-  external_account_secret_ref_key   = var.cert_manager_external_account_secret_ref_key
-  external_account_secret_ref_name  = var.cert_manager_external_account_secret_ref_name
+  external_account_secret_key       = var.cert_manager_external_account_secret_key
   preferred_chain                   = var.cert_manager_preferred_chain
   acme_server_url                   = var.cert_manager_acme_server_url
   dns_region                        = var.cert_manager_dns_region
   common_name                       = var.cert_manager_certificate_common_name
   is_ca                             = var.cert_manager_certificate_is_ca
   dns_names                         = var.cert_manager_dns_names
-  access_keyID_secret_ref_key       = var.cert_manager_access_keyID_secret_ref_key
-  access_keyID_secret_ref_name      = var.cert_manager_access_keyID_secret_ref_name
-  secret_access_key_secret_ref_key  = var.cert_manager_secret_access_key_secret_ref_key
-  secret_access_key_secret_ref_name = var.cert_manager_secret_access_key_secret_ref_name
-  access_key_id                     = var.cert_manager_access_key_id
   hosted_zone_id                    = var.cert_manager_hosted_zone_id
   role                              = var.cert_manager_role
 }

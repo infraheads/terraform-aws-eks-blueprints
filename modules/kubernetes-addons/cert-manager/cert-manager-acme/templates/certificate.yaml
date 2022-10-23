@@ -2,7 +2,7 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-    name: {{ required "Prefix of certificate and cluster issuer is required." .name }}-certificate
+    name: {{ .name }}-certificate
 spec:
   {{- if .commonName }}
   commonName: {{ .commonName | quote }}
@@ -10,8 +10,8 @@ spec:
   isCA: {{ .isCA }}
   issuerRef:
     kind: "ClusterIssuer"
-    name: {{ required "Prefix of certificate and cluster issuer is required." .name }}-route53-clusterissuer
-  secretName: {{ required "Prefix of certificate and cluster issuer is required." .name }}-certificate-secret
+    name: {{ .name }}-route53-clusterissuer
+  secretName: {{ .name }}-certificate-secret
   {{- if .dnsNames }}
   dnsNames: 
   {{ .dnsNames | toYaml | indent 4 }}

@@ -722,14 +722,8 @@ variable "cert_manager_external_account_keyID" {
   default     = ""
 }
 
-variable "cert_manager_external_account_secret_ref_key" {
-  description = "Secret Key Selector referencing a data item in a Kubernetes Secret which holds the symmetric MAC key of the External Account Binding."
-  type        = string
-  default     = ""
-}
-
-variable "cert_manager_external_account_secret_ref_name" {
-  description = "Secret Key Selector referencing a data item in a Kubernetes Secret which holds the symmetric MAC key of the External Account Binding."
+variable "cert_manager_external_account_secret_key" {
+  description = "Secret key of the CA that the External Account is bound to."
   type        = string
   default     = ""
 }
@@ -768,36 +762,6 @@ variable "cert_manager_dns_names" {
   description = "DNSNames is a list of DNS subjectAltNames to be set on the Certificate."
   type        = list(string)
   default     = []
-}
-
-variable "cert_manager_access_keyID_secret_ref_key" {
-  description = "The SecretAccessKey is used for authentication. The key of the entry in the Secret resource's `data` field to be used."
-  type        = string
-  default     = ""
-}
-
-variable "cert_manager_access_keyID_secret_ref_name" {
-  description = "The SecretAccessKey is used for authentication. Name of the resource being referred to."
-  type        = string
-  default     = ""
-}
-
-variable "cert_manager_secret_access_key_secret_ref_key" {
-  description = "The SecretAccessKey is used for authentication. The key of the entry in the Secret resource's `data` field to be used."
-  type        = string
-  default     = ""
-}
-
-variable "cert_manager_secret_access_key_secret_ref_name" {
-  description = "The SecretAccessKey is used for authentication. Name of the resource being referred to."
-  type        = string
-  default     = ""
-}
-
-variable "cert_manager_access_key_id" {
-  description = "The AccessKeyID is used for authentication."
-  type        = string
-  default     = ""
 }
 
 variable "cert_manager_hosted_zone_id" {

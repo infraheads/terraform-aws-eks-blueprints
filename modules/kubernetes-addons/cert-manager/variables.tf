@@ -84,7 +84,7 @@ variable "preferred_chain" {
 variable "acme_server_url" {
   description = "The URL used to access the ACME server's 'directory' endpoint."
   type        = string
-  default     = "https://acme-staging-v02.api.letsencrypt.org/directory"
+  default     = ""
 }
 
 variable "dns_region" {

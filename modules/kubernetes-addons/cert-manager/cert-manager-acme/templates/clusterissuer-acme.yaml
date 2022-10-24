@@ -12,7 +12,11 @@ spec:
     preferredChain: {{ .preferredChain | quote }}
     {{- end }}
     {{- if .externalAccountBinding.keyID }}
-    {{- include "externalAccount" . | indent 4 }}
+    externalAccountBinding:
+      keyID: {{ .externalAccountBinding.keyID | quote }}
+      keySecretRef:
+        key: secret
+        name: {{ .name }}-acme-server-secretkey
     {{- end }}
     privateKeySecretRef:
       name: {{ .name }}-route53-secretkeyref

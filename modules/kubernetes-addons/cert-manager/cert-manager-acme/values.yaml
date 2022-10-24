@@ -1,5 +1,5 @@
 name: example                                                         #Required
-email: hakobmkoyan8@gmail.com                                         #Recommended
+email: example@gmail.com                                         #Recommended
 externalAccountBinding:                                               #Optional
   keyID:                                                              #Required if using external account binding
   secretKey:                                                          #Required if using external account binding

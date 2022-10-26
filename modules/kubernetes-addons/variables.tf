@@ -386,6 +386,19 @@ variable "metrics_server_helm_config" {
   default     = {}
 }
 
+#-----------SYSDIG-------------
+variable "enable_sysdig_agent" {
+  description = "Enable Sysdig Agent add-on"
+  type        = bool
+  default     = false
+}
+
+variable "sysdig_agent_helm_config" {
+  description = "Sysdig Helm Chart config"
+  type        = any
+  default     = {}
+}
+
 #-----------TETRATE ISTIO-------------
 variable "enable_tetrate_istio" {
   description = "Enable Tetrate Istio add-on"
@@ -1167,6 +1180,19 @@ variable "airflow_helm_config" {
   default     = {}
 }
 
+#-----------Datadog Operator-------------
+variable "enable_datadog_operator" {
+  description = "Enable Datadog Operator add-on"
+  type        = bool
+  default     = false
+}
+
+variable "datadog_operator_helm_config" {
+  description = "Datadog Operator Helm Chart config"
+  type        = any
+  default     = {}
+}
+
 #-----------Promtail ADDON-------------
 variable "enable_promtail" {
   description = "Enable Promtail add-on"
@@ -1297,8 +1323,6 @@ variable "gatekeeper_helm_config" {
   type        = any
   default     = {}
 }
-
-
 
 #-----------Kubernetes Portworx ADDON-------------
 variable "enable_portworx" {

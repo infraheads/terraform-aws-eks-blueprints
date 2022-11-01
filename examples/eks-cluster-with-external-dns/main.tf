@@ -99,7 +99,7 @@ module "eks_blueprints_kubernetes_addons" {
 
   enable_aws_load_balancer_controller = true
   enable_external_dns                 = true
-
+  enable_route53_zone                 = true
   tags = local.tags
 }
 

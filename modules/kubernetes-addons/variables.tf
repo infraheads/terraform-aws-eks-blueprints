@@ -347,6 +347,11 @@ variable "external_dns_route53_zone_arns" {
   default     = []
 }
 
+variable "enable_route53_zone" {
+  description = "Create a Route53 zone."
+  type        = bool
+  default     = false
+}
 #-----------Amazon Managed Service for Prometheus-------------
 variable "enable_amazon_prometheus" {
   description = "Enable AWS Managed Prometheus service"

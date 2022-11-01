@@ -68,8 +68,13 @@ resource "aws_iam_policy" "external_dns" {
   policy      = data.aws_iam_policy_document.external_dns_iam_policy_document.json
 }
 
-# TODO - remove at next breaking change
+resource "aws_route53_zone" "route53_zone" {
+  count     = var.create_route53_zone ? 1 : 0
+  name      = "${var.domain_name}"
+}
+
 data "aws_route53_zone" "selected" {
+  count     = var.create_route53_zone ? 0 : 1
   name         = var.domain_name
   private_zone = var.private_zone
 }
@@ -78,7 +83,7 @@ data "aws_iam_policy_document" "external_dns_iam_policy_document" {
   statement {
     effect = "Allow"
     resources = distinct(concat(
-      [data.aws_route53_zone.selected.arn],
+      [var.create_route53_zone ? resource.aws_route53_zone.route53_zone[0].arn : data.aws_route53_zone.selected[0].arn],
       var.route53_zone_arns
     ))
     actions = ["route53:ChangeResourceRecordSets"]

@@ -268,6 +268,7 @@ module "external_dns" {
   domain_name       = var.eks_cluster_domain
   private_zone      = var.external_dns_private_zone
   route53_zone_arns = var.external_dns_route53_zone_arns
+  create_route53_zone = var.enable_route53_zone
 }
 
 module "fargate_fluentbit" {

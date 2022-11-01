@@ -16,7 +16,7 @@ variable "irsa_policies" {
 }
 
 variable "domain_name" {
-  description = "[Deprecated - use `route53_zone_arns`] Domain name of the Route53 hosted zone to use with External DNS."
+  description = "Domain name of the Route53 hosted zone to use with External DNS."
   type        = string
 }
 
@@ -47,4 +47,10 @@ variable "addon_context" {
     irsa_iam_role_path             = string
     irsa_iam_permissions_boundary  = string
   })
+}
+
+variable "create_route53_zone" {
+  description = "Create a Route53 zone."
+  type        = bool
+  default     = false
 }
